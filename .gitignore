@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+venv/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Env files with real credentials
+.env
+.env.local
+.env.*.local
+
+# Nginx local certificates
+nginx/certs/*.key
+nginx/certs/*.crt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

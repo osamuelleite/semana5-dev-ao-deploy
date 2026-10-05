@@ -1,0 +1,40 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #0d1117;
+  color: #e6edf3;
+  font-family: var(--font-geist-sans, system-ui, sans-serif);
+  padding: 24px;
+}
+
+.main {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 24px;
+  background-color: #161b22;
+}
+
+.status {
+  font-weight: 600;
+  color: #3fb950;
+}
+
+.error {
+  font-weight: 600;
+  color: #f85149;
+}
+
+.items {
+  margin: 0;
+  padding-left: 20px;
+}
