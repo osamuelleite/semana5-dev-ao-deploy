@@ -9,6 +9,6 @@ class HealthEndpointTests(TestCase):
     def test_health_payload_shape(self):
         response = self.client.get('/api/health/')
         data = response.json()
-        self.assertEqual(data['status'], 'ok')
+        self.assertEqual(data['status'], 'broken-on-purpose')
         self.assertIn('items', data)
         self.assertIsInstance(data['items'], list)
