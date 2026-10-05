@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   // Bind mounts no Docker Desktop (Windows/Mac) nao propagam eventos de
   // filesystem de forma confiavel; polling e o fallback oficial para
   // manter o hot reload funcionando dentro do container.
