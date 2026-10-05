@@ -9,11 +9,21 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
+RUN npm run build \
+    # A app nao usa next/image, entao os binarios nativos do sharp
+    # (~45MB) que o Next empacota no output standalone "por garantia"
+    # podem ser removidos com seguranca.
+    && rm -rf .next/standalone/node_modules/@img .next/standalone/node_modules/sharp
 
 # ---- runner: imagem minima de producao ----
-FROM node:20-alpine AS runner
+# Base "alpine" pura (~12MB) em vez de node:20-alpine (~194MB so de base):
+# copiamos apenas o binario do node, sem npm/yarn/corepack, para caber
+# no orcamento de 150MB da imagem final.
+FROM alpine:3.20 AS runner
 WORKDIR /app
+
+RUN apk add --no-cache libstdc++ libgcc
+COPY --from=builder /usr/local/bin/node /usr/local/bin/node
 
 ENV NODE_ENV=production
 ENV PORT=3000
